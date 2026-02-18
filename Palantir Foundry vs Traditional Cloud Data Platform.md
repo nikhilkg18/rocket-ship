@@ -329,7 +329,7 @@ Additionally it requires:
 ## 5. Policy-Aware Data — Security Travels With Data
 In Palantir Foundry, security is embedded directly into datasets and ontology objects, making data policy-aware by design.
 
-- Supported controls include:
+Supported controls include:
 - Row-level filters
 - Column masking
 - Object-level permissions
