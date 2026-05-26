@@ -216,12 +216,11 @@ This enhancement is important for systems such as high-frequency trading platfor
 
 # Iceberg in Palantir Foundry
 
-Palantir Foundry now supports Iceberg tables as a modern alternative to traditional datasets. Foundry provides both:
+Although Apache Iceberg 1.11 introduces several major capabilities at the framework level, availability inside Palantir Foundry depends on the Iceberg version currently supported by Foundry and the platform’s feature rollout timeline. As a result, some Iceberg 1.11 features may not yet be fully available in all Foundry environments.
 
-- Managed Iceberg tables
-- Virtual Iceberg tables via an external catalog or storage provider.
+Palantir Foundry supports Apache Iceberg tables as a modern alternative to traditional Foundry datasets, enabling more open, interoperable, and scalable lakehouse architectures. Foundry provides support for both managed Iceberg tables and externally managed Iceberg tables through catalog integrations.
 
-Foundry also implements the Iceberg REST Catalog specification, enabling interoperability with external compute engines.
+In addition, Foundry implements the Iceberg REST Catalog specification, allowing external compute engines and services to interact with Iceberg tables using standardized APIs. This improves interoperability across the broader data ecosystem and enables integration with engines such as Apache Spark, Trino, Flink, and other Iceberg-compatible platforms.
 
 
 ## Benefits of Iceberg in Foundry
