@@ -1,7 +1,11 @@
 # Apache Iceberg 1.11.0: A Major Step Forward for the Open Lakehouse Ecosystem
 
 ## Collab          
-1. [Ankita Hatibaruah](https://github.com/Ahb98), [LinkedIn](http://linkedin.com/in/ankita-hatibaruah-bb2a62218)      
+1. [Ankita Hatibaruah](https://github.com/Ahb98), [LinkedIn](http://linkedin.com/in/ankita-hatibaruah-bb2a62218)
+2. [Prashant Jha](https://github.com/PrashantJha29), [LinkedIn](https://www.linkedin.com/in/prashantjha29/)
+
+
+## Overview
 
 On May 19, 2026, Apache Iceberg officially released version 1.11.0, bringing major architectural enhancements, advanced data type support, improved delete handling, and powerful upgrades for modern data lakehouse workloads.
 
