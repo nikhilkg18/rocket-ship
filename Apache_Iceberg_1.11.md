@@ -4,6 +4,9 @@ On May 19, 2026, Apache Iceberg officially released version 1.11.0, bringing maj
 
 For data engineers and organizations building scalable lakehouse platforms, this release strengthens Iceberg’s position as the leading open table format for analytics, AI, streaming, and multi-engine interoperability.
 
+## TL;DR
+Apache Iceberg 1.11.0 is a major step forward for the open lakehouse ecosystem, introducing powerful features such as the new File Format API, Deletion Vectors, Variant data type, native geospatial support, and nanosecond timestamp precision. These enhancements improve scalability, query performance, semi-structured data handling, and multi-engine interoperability across platforms like Apache Spark, Flink, Trino, and Palantir Technologies Foundry, making Iceberg more future-ready for AI, streaming, and large-scale analytics workloads.
+
 # What is Apache Iceberg?
 
 Apache Iceberg is an open table format designed for huge analytic datasets. It provides:
