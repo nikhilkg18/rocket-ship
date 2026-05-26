@@ -226,15 +226,20 @@ Foundry also implements the Iceberg REST Catalog specification, enabling interop
 
 ## Benefits of Iceberg in Foundry
 
-### 1. Row-Level Operations
+### 1. Better interoperability
 
-Iceberg tables in Foundry support:
+Iceberg tables use an open standard.
 
-- DELETE
-- UPDATE
-- MERGE INTO
+That means external tools can work with them more easily.
 
-This allows modifying rows without rewriting the entire dataset.
+Example:
+
+- Spark
+- Databricks
+- Snowflake
+- Trino
+
+can all read/write Iceberg tables more naturally.
 
 ### 2. Better Compaction
 
