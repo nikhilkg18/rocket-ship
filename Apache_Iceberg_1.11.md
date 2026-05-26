@@ -219,7 +219,7 @@ This enhancement is important for systems such as high-frequency trading platfor
 Palantir Foundry now supports Iceberg tables as a modern alternative to traditional datasets. Foundry provides both:
 
 - Managed Iceberg tables
-- Virtual Iceberg tables connected to external catalogs such as Unity Catalog, Glue, Polaris, and Horizon. ([Palantir][1])
+- Virtual Iceberg tables via an external catalog or storage provider.
 
 Foundry also implements the Iceberg REST Catalog specification, enabling interoperability with external compute engines.
 
@@ -236,24 +236,13 @@ Iceberg tables in Foundry support:
 
 This allows modifying rows without rewriting the entire dataset.
 
-This is especially useful for:
+### 2. Better Compaction
 
-- CDC pipelines
-- ERP systems
-- Incremental data processing
-- Operational analytics
+Over time, data tables create many small files.
 
+Compaction combines them into fewer larger files for better performance.
 
-### 2. Improved Incremental Processing
-
-Iceberg changelog support enables efficient incremental consumption of updates and deletes.
-
-For Foundry pipelines, this improves:
-
-- Incremental transforms
-- Ontology syncs
-- Streaming-style architectures
-- Data reconciliation pipelines
+Iceberg can do this automatically without interrupting incremental reads.
 
 
 ### 3. Branch Isolation Enhancements
