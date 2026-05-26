@@ -285,6 +285,29 @@ One can see:
 - snapshots,
 - updates over time.
 
+## Differences Between Iceberg Tables and Foundry Datasets
+
+### 1. Default Branch Naming
+
+Apache Iceberg uses main as the default branch name, whereas Foundry traditionally uses master. Within Foundry’s Iceberg integration, these branch names are mapped equivalently. As a result, a Foundry job executing against the master branch will transparently write to the Iceberg table’s main branch.
+
+This compatibility layer ensures interoperability between Foundry-native workflows and Iceberg-compliant tooling without requiring branch reconfiguration.
+
+### 2. Automatic schema evolution
+
+Schema evolution in Iceberg tables is not universally automatic. Depending on the workflow, schema updates may either be applied automatically or require explicit modification commands.
+
+For example:
+
+Full table replacement workflows typically evolve the schema automatically.
+Incremental or append-based workflows may require explicit schema evolution operations, such as: ALTER TABLE to add, modify, or remove columns.
+
+When using Foundry Transforms APIs or Pipeline Builder in non-incremental mode, Foundry generally performs table replacement operations behind the scenes, allowing schema changes to be handled automatically.
+
+However, incremental schema evolution scenarios can still fail if incoming data does not match the existing table schema. In such cases, manual intervention may be required to reconcile schema differences before processing can continue.
+
+This behavior reflects Iceberg’s emphasis on explicit and controlled schema management, particularly in distributed and multi-engine environments.
+
 ## Using Iceberg in Foundry
 
 Apache Iceberg support in Palantir Foundry is currently evolving and, in many environments, is still available in beta version. Foundry already exposes Iceberg-based APIs such as IcebergInput, IcebergOutput, and native PyIceberg scans, indicating a strong strategic move toward open lakehouse interoperability and metadata-driven architectures.
