@@ -328,7 +328,7 @@ Additionally, Foundry may not yet support all Iceberg 1.11 features immediately 
 
 ## Using Iceberg in Foundry
 
-Generating a simple Iceberg table: using Polars/DuckDB
+Generating a simple Iceberg table: using Polars
 ```bash
 import polars as pl
 from transforms.api import transform
