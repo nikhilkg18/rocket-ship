@@ -210,3 +210,116 @@ Teams running GIS workloads, location analytics, ride-sharing platform analysis,
 Apache Iceberg 1.11 introduces native nanosecond timestamp support using two new V3 data types: timestamp_ns(without timezone) and timestamptz_ns (with UTC timezone). Earlier Iceberg versions only supported microsecond precision, which caused precision loss in high-frequency workloads where events occur within nanoseconds. For example, timestamps like 10:15:30.123456100 and 10:15:30.123456200 were both rounded to 10:15:30.123456, resulting in loss of exact event ordering.
 
 This enhancement is important for systems such as high-frequency trading platforms, scientific experiments, IoT sensors, and particle physics detectors, where nanosecond-level accuracy is critical. By supporting nanosecond timestamps natively, Iceberg preserves full timestamp semantics, timezone handling, and accurate event sequencing without relying on raw integer workarounds.
+
+## Apache Iceberg in Palantir Foundry
+
+Generating a simple Iceberg table: using Polars/DuckDB
+```bash
+import polars as pl
+from transforms.api import transform
+from transforms.tables import IcebergOutput, TableOutput
+
+
+@transform.using(
+    output=TableOutput("/.../Output")
+)
+def compute(output: IcebergOutput):
+    df_custom = pl.DataFrame({"phrase": ["Hello", "World"]})
+    output.write_table(df_custom)
+```
+Generating an Iceberg table output using Iceberg table input
+```bash
+import polars as pl
+from transforms.api import transform
+from transforms.tables import IcebergInput, IcebergOutput, TableInput, TableOutput
+
+
+@transform.using(
+    source_table=TableInput("/.../Input"),
+    output_table=TableOutput("/.../Output")
+)
+def compute(source_table: IcebergInput, output_table: IcebergOutput):
+    output_table.write_table(source_table.polars())
+```
+
+Using Apache Iceberg with PySpark:
+```bash
+from pyspark.sql import SparkSession
+
+# Create Spark Session with Iceberg support
+spark = SparkSession.builder \
+    .appName("IcebergExample") \
+    .config(
+        "spark.sql.extensions",
+        "org.apache.iceberg.spark.extensions.IcebergSparkSessionExtensions"
+    ) \
+    .config(
+        "spark.sql.catalog.demo",
+        "org.apache.iceberg.spark.SparkCatalog"
+    ) \
+    .config(
+        "spark.sql.catalog.demo.type",
+        "hadoop"
+    ) \
+    .config(
+        "spark.sql.catalog.demo.warehouse",
+        "/tmp/iceberg-warehouse"
+    ) \
+    .getOrCreate()
+
+# Sample Data
+data = [
+    (1, "Jack", "NZ"),
+    (2, "John", "UK"),
+    (3, "Alice", "USA")
+]
+
+columns = ["id", "name", "country"]
+
+df = spark.createDataFrame(data, columns)
+
+# Create Iceberg Table
+df.writeTo("demo.db.customers").createOrReplace()
+
+# Read Iceberg Table
+result = spark.read.table("demo.db.customers")
+
+# Show Data
+result.show()
+```
+
+### Advanced PyIceberg Native Scans in Palantir Foundry:
+
+While working with Apache Iceberg tables in Foundry, the standard IcebergInput and IcebergOutput APIs provide a simplified way to read and write data. These high-level APIs are convenient for most pipelines because they automatically load the current snapshot of the table.
+However, these streamlined methods typically materialize the full dataset into memory and expose only limited optimization capabilities.
+For advanced use cases, Foundry allows direct access to the underlying PyIceberg scan API using the .table() method.
+This enables fine-grained control over:
+
+- predicate pushdown
+- column projection
+- snapshot selection
+- scan limits
+- optimized reads
+
+```bash
+from pyiceberg.expressions import And, EqualTo, GreaterThan
+from transforms.api import transform
+from transforms.tables import IcebergInput, IcebergOutput, TableInput, TableOutput
+
+@transform.using(
+    source_table=TableInput("/.../Input"),
+    output_table=TableOutput("/.../Output"),
+)
+def compute(source_table: IcebergInput, output_table: IcebergOutput):
+    iceberg_table = source_table.table()
+
+    scan = iceberg_table.scan(
+        row_filter=And(
+            EqualTo("region", "EMEA"),
+            GreaterThan("score", 0.5),
+        ),
+        selected_fields=("customer_id", "score", "region"),
+        limit=10_000,
+    )
+    output_table.write_table(scan.to_polars())
+```
