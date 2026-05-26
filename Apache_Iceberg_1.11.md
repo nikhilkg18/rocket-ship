@@ -263,36 +263,27 @@ SET status = 'inactive'
 WHERE last_login < '2022-01-01'
 ```
 
-### 4. Open Ecosystem Compatibility
+### 4. Changelogs
 
-Because Iceberg is an open standard, Foundry Iceberg tables can integrate with:
+Iceberg can track:
 
-- Spark
-- Trino
-- Flink
-- Snowflake
-- Databricks
-- PyIceberg
+- inserted rows,
+- updated rows,
+- deleted rows.
 
-without duplicating data. 
-
-This reduces vendor lock-in and improves interoperability.
+This allows incremental processing, meaning instead of rereading the whole table, systems can process only changes.
 
 
-### 5. Better Performance and Scalability
+### 5. Better history tracking
 
-Iceberg’s metadata architecture improves performance for very large datasets by avoiding expensive directory listing operations and excessive file rewrites.
+Iceberg keeps richer metadata/history.
 
-For Foundry customers handling:
+One can see:
 
-- Manufacturing systems
-- Supply chain analytics
-- Vehicle telemetry
-- Financial transactions
-- IoT workloads
-
-this can significantly reduce compute cost and improve query latency.
-
+- table versions,
+- schema changes,
+- snapshots,
+- updates over time.
 
 ## Using Iceberg in Foundry
 
