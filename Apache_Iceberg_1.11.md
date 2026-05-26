@@ -302,11 +302,7 @@ For example:
 Full table replacement workflows typically evolve the schema automatically.
 Incremental or append-based workflows may require explicit schema evolution operations, such as: ALTER TABLE to add, modify, or remove columns.
 
-When using Foundry Transforms APIs or Pipeline Builder in non-incremental mode, Foundry generally performs table replacement operations behind the scenes, allowing schema changes to be handled automatically.
-
-However, incremental schema evolution scenarios can still fail if incoming data does not match the existing table schema. In such cases, manual intervention may be required to reconcile schema differences before processing can continue.
-
-This behavior reflects Iceberg’s emphasis on explicit and controlled schema management, particularly in distributed and multi-engine environments.
+When using Foundry Transforms APIs or Pipeline Builder in non-incremental mode, Foundry generally performs table replacement operations behind the scenes, allowing schema changes to be handled automatically. However, incremental schema evolution scenarios can still fail if incoming data does not match the existing table schema. In such cases, manual intervention may be required to reconcile schema differences before processing can continue. This behavior reflects Iceberg’s emphasis on explicit and controlled schema management, particularly in distributed and multi-engine environments.
 
 ## Current Limitations in Foundry
 
