@@ -228,9 +228,7 @@ Foundry also implements the Iceberg REST Catalog specification, enabling interop
 
 ### 1. Better interoperability
 
-Iceberg tables use an open standard.
-
-That means external tools can work with them more easily.
+Iceberg tables use an open standard. That means external tools can work with them more easily.
 
 Example:
 
