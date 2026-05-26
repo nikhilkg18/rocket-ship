@@ -308,6 +308,18 @@ However, incremental schema evolution scenarios can still fail if incoming data 
 
 This behavior reflects Iceberg’s emphasis on explicit and controlled schema management, particularly in distributed and multi-engine environments.
 
+## Current Limitations in Foundry
+
+Iceberg support in Foundry is still in Beta, and some features are not yet fully supported, including:
+
+* Views
+* Restricted views
+* Streaming
+* Lightweight Pipeline Builder pipelines
+* Some advanced external engine integrations
+
+Additionally, Foundry may not yet support all Iceberg 1.11 features immediately after release.
+
 ## Using Iceberg in Foundry
 
 Apache Iceberg support in Palantir Foundry is currently evolving and, in many environments, is still available in beta version. Foundry already exposes Iceberg-based APIs such as IcebergInput, IcebergOutput, and native PyIceberg scans, indicating a strong strategic move toward open lakehouse interoperability and metadata-driven architectures.
@@ -422,14 +434,11 @@ def compute(source_table: IcebergInput, output_table: IcebergOutput):
     )
     output_table.write_table(scan.to_polars())
 ```
-## Current Limitations in Foundry
 
-Iceberg support in Foundry is still in Beta, and some features are not yet fully supported, including:
+## Conclusion
 
-* Views
-* Restricted views
-* Streaming
-* Lightweight Pipeline Builder pipelines
-* Some advanced external engine integrations
+Apache Iceberg 1.11 represents a major advancement for the open lakehouse ecosystem. Features such as deletion vectors, nanosecond timestamps, variant types, and the new File Format API improve performance, flexibility, and scalability for modern analytics workloads.
 
-Additionally, Foundry may not yet support all Iceberg 1.11 features immediately after release.
+Palantir Foundry’s adoption of Iceberg positions it strongly for future lakehouse and AI-native architectures. Even if Foundry does not yet fully support every Iceberg 1.11 capability, many of the improvements align closely with Foundry’s direction toward interoperable, scalable, and enterprise-grade data platforms.
+
+As adoption of open table formats continues to grow, Iceberg is becoming a foundational technology for the future of large-scale analytics and AI systems.
