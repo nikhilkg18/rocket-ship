@@ -68,11 +68,11 @@ Prompt engineering made AI **impressive** because it showed how much could chang
 
 ## AI Use
 
-## AI Use
+AI tools were used during the creation of this article to support productivity, refinement, and presentation quality. The original idea, core argument, article direction, and final editorial choices were developed by the authors.
 
-AI assistance was used to improve grammar, readability, flow, and overall presentation. All suggestions were reviewed, adapted, and edited to preserve the authors' original intent and perspective. AI tools were used as a productivity and refinement aid while creating this article. The original idea, central argument, structure, and final editorial decisions were developed by the authors.
+AI assistance helped improve grammar, clarity, readability, and flow. The suggestions were carefully reviewed and adapted so that the final content remained aligned with the intended message and perspective.
 
-Some visuals used in this article were generated with the help of AI tools for illustrative purposes.The authors retain full responsibility for the final content, interpretation, and published version.
+Some visuals used in this article were generated with the help of AI tools for illustrative purposes.
 
 ---
 		   
