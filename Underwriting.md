@@ -1,10 +1,10 @@
 # Understanding Underwriting: The Hidden Engine Behind Financial Decisions
 ---
 ## Contributors:
-    1. [Nilesh Saraf](https://github.com/nileshsaraf56), [LinkedIn](https://www.linkedin.com/in/nilesh-saraf-8b7aa327b/)
-    2. [Shishupal Kumar](https://github.com/shishupalamigo), [LinkedIn](https://www.linkedin.com/in/shishupalamigo/)
-    3. [Nikhil KG](https://www.linkedin.com/in/nikhil-k-g)
-    4. [Shouvik Karfa](https://www.linkedin.com/in/shouvikkarfa/)
+1. [Nilesh Saraf](https://github.com/nileshsaraf56), [LinkedIn](https://www.linkedin.com/in/nilesh-saraf-8b7aa327b/)
+2. [Shishupal Kumar](https://github.com/shishupalamigo), [LinkedIn](https://www.linkedin.com/in/shishupalamigo/)
+3. [Nikhil KG](https://www.linkedin.com/in/nikhil-k-g)
+4. [Shouvik Karfa](https://www.linkedin.com/in/shouvikkarfa/)
 ---
 
 ## Introduction
